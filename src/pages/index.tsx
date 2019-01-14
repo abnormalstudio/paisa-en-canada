@@ -148,6 +148,7 @@ const HomeIntro: React.FunctionComponent = () => (
           justify-content: flex-end;
           padding-right: 2rem;
           padding-top: 0.5rem;
+          padding-bottom: 2rem;
 
           li {
             padding-left: 1rem;
@@ -229,7 +230,8 @@ const HomeArticles: React.FunctionComponent<HomeArticlesProps> = ({
 
                 @media (max-width: 1023px) {
                   width: 100%;
-                  margin-bottom: 2rem;
+                  margin-bottom: 1rem;
+                  margin-top: 1rem;
                 }
               `}
             >
