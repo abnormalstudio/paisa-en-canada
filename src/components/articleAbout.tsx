@@ -1,7 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
-import Link from "gatsby-link";
 import { H3Line } from "$components";
 
 const ArticleAbout = () => (
@@ -22,9 +21,6 @@ const ArticleAbout = () => (
         <H3Line>Sobre Mí</H3Line>
         <Image fluid={data.file.childImageSharp.fluid} alt="Marian Serna" />
         <p>Hola! Yo soy Marian Serna, la paisa de esta página.</p>
-        <p>
-          <Link to="/acerca">Leer más</Link>
-        </p>
       </div>
     )}
   />

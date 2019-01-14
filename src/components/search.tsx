@@ -8,7 +8,8 @@ import {
   Index,
   connectHits
 } from "react-instantsearch-dom";
-import { css } from "emotion";
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 import { parseISO, format } from "date-fns";
 import esLocale from "date-fns/locale/es";
 import { Tags } from "./index";
@@ -25,8 +26,10 @@ const Search: React.FunctionComponent<Props> = ({ showSearch }) => {
   return (
     <div
       css={css`
-        position: relative;
+        position: fixed;
+        top: 0px;
         width: 100%;
+        z-index: 10;
       `}
     >
       <InstantSearch
@@ -34,45 +37,13 @@ const Search: React.FunctionComponent<Props> = ({ showSearch }) => {
         apiKey="44e6f1b460576a20e727565b9349268a"
         indexName="articles"
       >
-        <div
-          css={css`
-            position: absolute;
-            z-index: 5;
-            background-color: rgba(240, 240, 240, 0.95);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-            padding-bottom: 1rem;
-            width: 100%;
-
-            .ais-SearchBox-input {
-              width: 100%;
-              font-size: 1.5rem;
-              padding: 0.5rem;
-              border-radius: 0px;
-              border: none;
-              border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-              border-top: 1px solid rgba(0, 0, 0, 0.25);
-            }
-
-            .ais-SearchBox-submit,
-            .ais-SearchBox-reset {
-              display: none;
-            }
-
-            .ais-PoweredBy {
-              display: inline-block;
-              transform: scale(0.6) translateX(-20%);
-            }
-            .ais-PoweredBy-text {
-              transform: translateY(-7px);
-              display: inline-block;
-            }
-          `}
-        >
+        <SearchWrapper>
           <SearchBox autoFocus={true} />
           <div
             css={css`
               display: flex;
               flex-wrap: wrap;
+              margin-top: 3rem;
 
               .ais-MultiIndex__root {
                 padding: 1rem 1rem;
@@ -100,11 +71,50 @@ const Search: React.FunctionComponent<Props> = ({ showSearch }) => {
             </Index>
           </div>
           <PoweredBy />
-        </div>
+        </SearchWrapper>
       </InstantSearch>
     </div>
   );
 };
+
+const SearchWrapper = styled("div")`
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(240, 240, 240, 0.95);
+  padding-bottom: 1rem;
+  width: 100%;
+
+  .ais-SearchBox-input {
+    position: absolute;
+    top: 0.75rem;
+    right: 8rem;
+    width: 300px;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+
+    @media (max-width: 768px) {
+      width: 200px;
+    }
+  }
+
+  .ais-SearchBox-submit,
+  .ais-SearchBox-reset {
+    display: none;
+  }
+
+  .ais-PoweredBy {
+    display: inline-block;
+    transform: scale(0.6) translateX(-20%);
+  }
+  .ais-PoweredBy-text {
+    transform: translateY(-7px);
+    display: inline-block;
+  }
+`;
 
 const TagHits = ({ hits }: any) => (
   <>
@@ -155,7 +165,7 @@ const ArticleHits = ({ hits }: any) => (
         padding: 0px 1rem 0px 0px;
         width: 33%;
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
           width: 50%;
         }
         @media (max-width: 768px) {

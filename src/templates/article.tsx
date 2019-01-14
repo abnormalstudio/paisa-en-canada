@@ -47,7 +47,7 @@ const Article = ({ data }: Props) => {
           display: flex;
           flex-wrap: wrap;
           max-width: 1200px;
-          margin: 2rem auto;
+          margin: 0rem auto 2rem auto;
           padding: 15px;
         `}
       >

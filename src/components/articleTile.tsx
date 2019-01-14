@@ -49,7 +49,7 @@ const ArticleTile = ({
             css={css`
               padding: 0px 1rem 0.75rem 1rem;
 
-              @media (max-width: 1024px) {
+              @media (max-width: 1023px) {
                 font-size: 1rem;
                 line-height: 1.25rem;
                 padding-bottom: 0.5rem;

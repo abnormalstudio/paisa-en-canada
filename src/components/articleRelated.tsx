@@ -45,8 +45,8 @@ const ArticleRelated = ({ articles }: Props) => (
               display: block;
               margin-bottom: 0.5rem;
               margin-right: 0.5rem;
-              width: 100px;
-              height: 75px;
+              width: 80px;
+              height: 60px;
               background-size: cover;
               background-position: center;
             `}
@@ -56,7 +56,13 @@ const ArticleRelated = ({ articles }: Props) => (
               }')`
             }}
           />
-          <Link to={`/${article.frontmatter.slug}`}>
+          <Link
+            to={`/${article.frontmatter.slug}`}
+            css={css`
+              display: block;
+              width: calc(100% - 80px);
+            `}
+          >
             <h4
               css={css`
                 margin: 0px;

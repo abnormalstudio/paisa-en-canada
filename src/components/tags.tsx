@@ -23,6 +23,7 @@ const TagList = styled("ul")`
 `;
 const TagItem = styled("li")`
   padding-right: 5px;
+  font-family: "Barlow Condensed", sans-serif;
 `;
 
 export default Tags;
